@@ -1,0 +1,25 @@
+{
+  "name": "clamazon",
+  "version": "1.0.0",
+  "description": "clamazon",
+  "main": "clamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkoeckritz/clamazon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kkoeckritz/clamazon/issues"
+  },
+  "homepage": "https://github.com/kkoeckritz/clamazon#readme",
+  "dependencies": {
+    "cli-table": "^0.3.1",
+    "inquirer": "^6.1.0",
+    "mysql": "^2.16.0"
+  }
+}
