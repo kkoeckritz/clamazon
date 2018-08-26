@@ -20,7 +20,7 @@ function showMenu() {
 		{
 			type: "list",
 			name: "do",
-			message: "Select action to perform",
+			message: "Select action to perform:",
 			choices: [
 				"View products for sale",
 				"View low inventory",
