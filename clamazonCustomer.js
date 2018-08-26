@@ -12,6 +12,7 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
   if (err) throw err;
+  
   listItems();
 });
 
@@ -19,7 +20,7 @@ function setupTable() {
   var table = new Table({
     head: ["ID","SALE ITEM", "PRICE", "QUANTITY", "DEPARTMENT"],
     colWidths: [4, 60, 11, 10, 20]
-  })
+  });
   
   return table;
 }
@@ -55,7 +56,10 @@ function doBuy() {
     {
       type: "input",
       name: "id",
-      message: "Item ID:"
+      message: "Item ID:",
+      validate: function(val) {
+        return (!isNaN(val) && val.length > 0 && val.length < 4);
+      }
     },
     {
       type: "input",
@@ -93,3 +97,4 @@ function updateStock(id, quantity) {
   
   connection.end();
 }
+
