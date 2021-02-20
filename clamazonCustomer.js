@@ -1,18 +1,21 @@
-var inquirer = require("inquirer");
-var mysql = require("mysql");
-var Table = require('cli-table');
+import inquirer from "inquirer";
+import mysql from "mysql2";
+import Table from "cli-table";
+import dotenv  from "dotenv";
 
+dotenv.config();
+
+// connect to mysql server
 var connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "password",
-  database: "clamazon"
+	host: process.env.DB_HOST,
+	port: process.env.DB_PORT,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASS,
+	database: process.env.DB_NAME
 });
 
 connection.connect(function(err) {
   if (err) throw err;
-  
   listItems();
 });
 
@@ -33,7 +36,7 @@ function listItems() {
     var table = setupTable();
 
     // fill table with DB items
-    for (r of res) {
+    for (let r of res) {
       table.push(
         [
           r.item_id,

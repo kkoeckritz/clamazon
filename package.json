@@ -2,6 +2,7 @@
   "name": "clamazon",
   "version": "1.0.0",
   "description": "clamazon",
+  "type": "module",
   "main": "clamazonCustomer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,8 +19,9 @@
   },
   "homepage": "https://github.com/kkoeckritz/clamazon#readme",
   "dependencies": {
-    "cli-table": "^0.3.1",
-    "inquirer": "^6.1.0",
-    "mysql": "^2.16.0"
+    "cli-table": "^0.3.5",
+    "dotenv": "^8.2.0",
+    "inquirer": "^7.3.3",
+    "mysql2": "^2.2.5"
   }
 }

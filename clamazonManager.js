@@ -1,13 +1,17 @@
-var inquirer = require("inquirer");
-var mysql = require("mysql");
-var Table = require('cli-table');
+import inquirer from "inquirer";
+import mysql from "mysql2";
+import Table from "cli-table";
+import dotenv  from "dotenv";
 
+dotenv.config();
+
+// connect to mysql server
 var connection = mysql.createConnection({
-	host: "localhost",
-	port: 3306,
-	user: "root",
-	password: "password",
-	database: "clamazon"
+	host: process.env.DB_HOST,
+	port: process.env.DB_PORT,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASS,
+	database: process.env.DB_NAME
 });
 
 connection.connect(function(err) {
@@ -62,7 +66,7 @@ function listItems() {
     var table = setupTable();
 
     // fill table with DB items
-    for (r of res) {
+    for (let r of res) {
       table.push(
         [
           r.item_id,
@@ -87,7 +91,7 @@ function viewLow() {
     var table = setupTable();
 
     // fill table with DB items
-    for (r of res) {
+    for (let r of res) {
       table.push(
         [
           r.item_id,
@@ -169,6 +173,8 @@ function addStock(product_name, department_name, price, stock_quantity) {
 			stock_quantity: stock_quantity
     },
     function(err, res) {
+			if (err) throw err;
+
       console.log(`\nAdded item: ${product_name}\n`);
     }
 	);
